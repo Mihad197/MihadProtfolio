@@ -114,7 +114,32 @@ h2 {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}/* Mobile menu overlay */
+@media (max-width: 768px) {
+    #nav-list {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px; /* header height অনুযায়ী */
+        right: 0;
+        background: rgba(0,0,0,0.95); /* পেছনের background dark/transparent */
+        padding: 15px 20px;
+        border-radius: 5px;
+        width: max-content;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        z-index: 1000; /* সব উপরের দিকে show হবে */
+    }
+
+    #nav-list.show {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 
 .main-nav ul {
     list-style: none;
@@ -136,6 +161,7 @@ h2 {
     box-shadow: none !important;
 }
 
+
 /* লিংকে হোভার করলে কালার অ্যাকসেন্ট */
 .main-nav ul li a:not(.active-btn-style):hover {
     color: var(--clr-accent-end);
@@ -153,6 +179,8 @@ h2 {
     background: var(--gradient-main);
     transition: width 0.3s ease-in-out;
 }
+
+
 
 /* হোভার বা আন্ডারলাইন সক্রিয় হলে */
 .main-nav ul li a:hover::after,
@@ -248,6 +276,27 @@ h2 {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+/* Mobile hamburger icon */
+@media (max-width: 768px) {
+  #mobile-menu-btn {
+    display: block !important;  /* Mobile এ দেখাবে */
+    color: #fff;                /* Icon color (white) */
+    background: transparent;    
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+  }
+}
+
+/* Mobile view এ hamburger button দেখানোর জন্য */
+@media (max-width: 768px) {
+  #mobile-menu-btn {
+    display: block !important;
+    position: relative; /* যদি overlay সমস্যা থাকে */
+    z-index: 999;       /* সব উপরের দিকে থাকবে */
+  }
 }
 
 
